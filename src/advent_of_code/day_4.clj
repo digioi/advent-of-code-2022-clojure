@@ -1,6 +1,7 @@
 (ns advent-of-code.day-4
-  (:require [clojure.string]
-            [clojure.set]))
+  (:require
+   [clojure.string]
+   [clojure.set]))
 
 (def sample "2-4,6-8
 2-3,4-5
@@ -9,11 +10,12 @@
 6-6,4-6
 2-6,4-8")
 
+(defn convert-to-ints [input]
+  (map parse-long input))
+
 (defn parse [input]
   (clojure.string/split input #"\n"))
 
-(defn convert-to-ints [input]
-  (map (comp parse-long) input))
 
 (defn get-range [tuple]
   (range (first tuple) (inc (second tuple)) ))
